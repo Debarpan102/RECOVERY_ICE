@@ -15,6 +15,8 @@
 # limitations under the License.
 #
 
-PRODUCT_MAKEFILES := $(LOCAL_DIR)/twrp_RMX3461.mk
+PRODUCT_MAKEFILES := \
+    $(LOCAL_DIR)/twrp_RMX3461.mk
 
-COMMON_LUNCH_CHOICES := twrp_RMX3461-eng
+COMMON_LUNCH_CHOICES := \
+    twrp_RMX3461-eng
