@@ -24,13 +24,16 @@ BUILD_BROKEN_ELF_PREBUILT_PRODUCT_COPY_FILES := true
 TARGET_ARCH := arm64
 TARGET_ARCH_VARIANT := armv8-a
 TARGET_CPU_ABI := arm64-v8a
-TARGET_CPU_VARIANT := cortex-a76
+TARGET_CPU_ABI2 :=
+TARGET_CPU_VARIANT := generic
+TARGET_CPU_VARIANT_RUNTIME := kryro300
 
 TARGET_2ND_ARCH := arm
 TARGET_2ND_ARCH_VARIANT := armv8-a
 TARGET_2ND_CPU_ABI := armeabi-v7a
 TARGET_2ND_CPU_ABI2 := armeabi
-TARGET_2ND_CPU_VARIANT := cortex-a76
+TARGET_2ND_CPU_VARIANT := $(TARGET_CPU_VARIANT)
+TARGET_2ND_CPU_VARIANT_RUNTIME := cortex-a75
 
 ENABLE_CPUSETS := true
 ENABLE_SCHEDBOOST := true
@@ -114,9 +117,9 @@ TARGET_COPY_OUT_VENDOR_DLKM := vendor_dlkm
 
 # Partitions
 BOARD_SUPER_PARTITION_SIZE := 10200547328
-BOARD_SUPER_PARTITION_GROUPS := realme_dynamic_partitions
-BOARD_REALME_DYNAMIC_PARTITIONS_PARTITION_LIST := odm product system system_ext vendor vendor_dlkm
-BOARD_REALME_DYNAMIC_PARTITIONS_SIZE := 10196353024 # BOARD_SUPER_PARTITION_SIZE - 4MB
+BOARD_SUPER_PARTITION_GROUPS := qti_dynamic_partitions
+BOARD_QTI_DYNAMIC_PARTITIONS_PARTITION_LIST := odm product system system_ext vendor vendor_dlkm
+BOARD_QTI_DYNAMIC_PARTITIONS_SIZE := 10196353024 # BOARD_SUPER_PARTITION_SIZE - 4MB
 
 # Enables proper handling of /data/media
 RECOVERY_SDCARD_ON_DATA := true
@@ -189,7 +192,7 @@ TW_EXTRA_LANGUAGES := true
 
 # Brightness flags
 TW_BRIGHTNESS_PATH := /sys/class/backlight/panel0-backlight/brightness
-TW_MAX_BRIGHTNESS := 3276
+TW_MAX_BRIGHTNESS := 500
 TW_DEFAULT_BRIGHTNESS := 150
 
 # CPU temp sysfs path, if it is zero all the time
@@ -209,6 +212,12 @@ TARGET_USES_MKE2FS := true
 
 # For mounting NTFS
 TW_INCLUDE_NTFS_3G := true
+
+# For additional flags
+TW_HAS_NO_RECOVERY_PARTITION := true
+TW_HAS_NO_BOOT_PARTITION := true
+TW_HAS_DOWNLOAD_MODE := true
+TW_FRAMERATE := 60
 
 # Blacklist certain input devices that might break touch in TWRP
 TW_INPUT_BLACKLIST := hbtp_vm
